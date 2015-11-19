@@ -26,8 +26,10 @@
  * Define DocBlock
  **/
 
-// Load unmodified geshi: http://qbnz.com/highlighter/
-include(dirname(dirname(__FILE__)) . '/geshi/geshi.php');
+// Load unmodified geshi (if MediaWiki hasn't already): http://qbnz.com/highlighter/
+if (!defined('GESHI_VERSION')) {
+	include(dirname(dirname(__FILE__)) . '/geshi/geshi.php');
+}
 
 // Load umodified Michel Fortin's PHP Markdown Extra: http://michelf.com/projects/php-markdown/
 define('MARKDOWN_PARSER_CLASS',  'MarkdownExtraGeshi_Parser');
