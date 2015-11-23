@@ -26,9 +26,15 @@
  * Define DocBlock
  **/
 
-// Load unmodified geshi (if MediaWiki hasn't already): http://qbnz.com/highlighter/
+// Load geshi (use the built-in one from MediaWiki 1.21+ if available)
 if (!defined('GESHI_VERSION')) {
-	include(dirname(dirname(__FILE__)) . '/geshi/geshi.php');
+	$builtinGeshi = "$IP/extensions/SyntaxHighlight_GeSHi/SyntaxHighlight_GeSHi.php";
+	if (file_exists($builtinGeshi)) {
+		require_once($builtinGeshi);
+	} else {
+		// Load unmodified geshi from: http://qbnz.com/highlighter/
+		include(dirname(dirname(__FILE__)) . '/geshi/geshi.php');
+	}
 }
 
 // Load umodified Michel Fortin's PHP Markdown Extra: http://michelf.com/projects/php-markdown/
